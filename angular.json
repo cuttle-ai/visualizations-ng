@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "visualizations": {
+      "projectType": "library",
+      "root": "projects/visualizations",
+      "sourceRoot": "projects/visualizations/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/visualizations/tsconfig.lib.json",
+            "project": "projects/visualizations/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/visualizations/src/test.ts",
+            "tsConfig": "projects/visualizations/tsconfig.spec.json",
+            "karmaConfig": "projects/visualizations/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/visualizations/tsconfig.lib.json",
+              "projects/visualizations/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "visualizations"
+}

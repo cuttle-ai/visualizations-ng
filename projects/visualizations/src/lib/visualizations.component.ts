@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import InitVisualizations from '@cuttleai/visualizations';
 import QueryResult from '@cuttleai/visualizations/lib/models/query';
 
@@ -9,15 +9,17 @@ import QueryResult from '@cuttleai/visualizations/lib/models/query';
   `,
   styles: []
 })
-export class VisualizationsComponent implements OnInit {
+export class VisualizationsComponent implements OnInit, OnChanges {
 
   @Input()
   queryResult: QueryResult;
 
   constructor() { }
 
-  ngOnInit() {
-    InitVisualizations('cuttle-visualization', this.queryResult)
+  ngOnInit() { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    InitVisualizations('cuttle-visualization', changes.queryResult.currentValue);
   }
 
 }

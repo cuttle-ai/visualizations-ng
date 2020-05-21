@@ -37,6 +37,124 @@
           }
         }
       }
+    },
+    "visualizations-example": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/visualizations-example",
+      "sourceRoot": "projects/visualizations-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/visualizations-example",
+            "index": "projects/visualizations-example/src/index.html",
+            "main": "projects/visualizations-example/src/main.ts",
+            "polyfills": "projects/visualizations-example/src/polyfills.ts",
+            "tsConfig": "projects/visualizations-example/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/visualizations-example/src/favicon.ico",
+              "projects/visualizations-example/src/assets"
+            ],
+            "styles": [
+              "projects/visualizations-example/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/visualizations-example/src/environments/environment.ts",
+                  "with": "projects/visualizations-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "visualizations-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "visualizations-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "visualizations-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/visualizations-example/src/test.ts",
+            "polyfills": "projects/visualizations-example/src/polyfills.ts",
+            "tsConfig": "projects/visualizations-example/tsconfig.spec.json",
+            "karmaConfig": "projects/visualizations-example/karma.conf.js",
+            "assets": [
+              "projects/visualizations-example/src/favicon.ico",
+              "projects/visualizations-example/src/assets"
+            ],
+            "styles": [
+              "projects/visualizations-example/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/visualizations-example/tsconfig.app.json",
+              "projects/visualizations-example/tsconfig.spec.json",
+              "projects/visualizations-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/visualizations-example/e2e/protractor.conf.js",
+            "devServerTarget": "visualizations-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "visualizations-example:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "visualizations"
 }

@@ -1,9 +1,9 @@
 {
   "name": "@cuttleai/visualizations-ng",
-  "version": "0.0.56",
+  "version": "0.0.57",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
-    "@cuttleai/visualizations": "0.0.56"
+    "@cuttleai/visualizations": "0.0.57"
   }
 }
